@@ -1,30 +1,58 @@
 package com.github.samirtf.giu.giuandroid.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by samirtf on 5/4/16.
  */
 public class Device {
 
-
+    @SerializedName("proto")
     private Proto proto;
+
+    @SerializedName("token")
     private String token;
+
+    @SerializedName("lang")
     private String lang;
+
+    @SerializedName("badge")
     private int badge;
+
+    @SerializedName("updated")
     private long updated;
+
+    @SerializedName("category")
     private String category;
+
+    @SerializedName("contentAvailable")
     private String contentAvailable;
+
+    @SerializedName("baseUrl")
     private String baseUrl;
+
+    @SerializedName("id")
     private String id;
+
+    @SerializedName("created")
     private long created;
 
-    public Device(Proto proto, String token, String lang, int badge, String category, String contentAvailable, String baseUrl) {
+    public Device() {}
+
+    public Device(Proto proto, String token, String lang, int badge, long updated,
+                  String category, String contentAvailable, String baseUrl, String id,
+                  long created) {
+
         this.proto = proto;
         this.token = token;
         this.lang = lang;
         this.badge = badge;
+        this.updated = updated;
         this.category = category;
         this.contentAvailable = contentAvailable;
         this.baseUrl = baseUrl;
+        this.id = id;
+        this.created = created;
     }
 
     public Proto getProto() {
@@ -59,12 +87,12 @@ public class Device {
         this.badge = badge;
     }
 
-    public void setUpdated(long updated) {
-        this.updated = updated;
-    }
-
     public long getUpdated() {
         return updated;
+    }
+
+    public void setUpdated(long updated) {
+        this.updated = updated;
     }
 
     public String getCategory() {
@@ -99,12 +127,28 @@ public class Device {
         this.id = id;
     }
 
+    public long getCreated() {
+        return created;
+    }
+
     public void setCreated(long created) {
         this.created = created;
     }
 
-    public long getCreated() {
-        return created;
+    @Override
+    public String toString() {
+        return "Device{" +
+                "proto=" + proto +
+                ", token='" + token + '\'' +
+                ", lang='" + lang + '\'' +
+                ", badge=" + badge +
+                ", updated=" + updated +
+                ", category='" + category + '\'' +
+                ", contentAvailable='" + contentAvailable + '\'' +
+                ", baseUrl='" + baseUrl + '\'' +
+                ", id='" + id + '\'' +
+                ", created=" + created +
+                '}';
     }
 
 }

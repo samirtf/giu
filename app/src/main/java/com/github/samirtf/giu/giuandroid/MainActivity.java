@@ -10,11 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.samirtf.giu.giuandroid.model.Device;
-import com.github.samirtf.giu.giuandroid.model.GiuRestClient;
-import com.github.samirtf.giu.giuandroid.model.GiuRestClientApiInterface;
+import com.github.samirtf.giu.giuandroid.services.GiuRestClient;
+import com.github.samirtf.giu.giuandroid.services.GiuRestClientApiInterface;
 import com.github.samirtf.giu.giuandroid.model.Proto;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.squareup.okhttp.ResponseBody;
 
 import org.json.JSONException;
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void register(GiuRestClientApiInterface service) {
         final ProgressDialog dialog = ProgressDialog.show(this, "", "loading...");
-        Call<ResponseBody> call = service.registerDevice(device.getProto().toString(), device.getToken(),
+        Call<ResponseBody> call = service.register(device.getProto().toString(), device.getToken(),
                 device.getLang(), device.getBadge(), device.getCategory(), device.getContentAvailable());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
